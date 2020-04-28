@@ -1,37 +1,143 @@
-﻿<html>
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="msapplication-tap-highlight" content="no" />
-  <link rel="shortcut icon" type="image/x-icon" href="ldpi.png">
-  <link rel="stylesheet" href="index.css">
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />  
-    <title>Nava</title>
-  </head>
-<center>
-<body>
-  
-  <nav class="navbar">
-    <a href="#" class="navbar-brand"><span><img src="ldpi.png" style="width: 3.5em;"></span></a>
-    <a href="#" class="navbar-brand"><span>Nava</span></a>
-    <ul>
-      <li><a href="#web">Weblink Menu</a></li>
-      <li><a href="#gva">Google and Voice assistant</a></li>
-      <li><a href="#ntb">Note Book</a></li>
-    </ul>
-    <button class="navbar-toggler">
-      <span></span>
-    </button>
-  </nav>
+<meta charset="utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="ldpi.png">
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+<style>
+html,
+body {
+display: block;
+font-family: Arial;
+height: 100%;
+margin: 0;
+text-align: center;
+text-transform: uppercase;
+}
+#splash,
+#content {
+display: table;
+height: 100%;
+vertical-align: middle;
+width: 100%;
+}
+#content p {
+display: table-cell;
+vertical-align: middle;
+font-size:50px !important;
+font-family: 'Nunito', sans-serif;
+margin-top:15% !important;
+word-wrap: break-word;
+}
+/***This code is used for sowing the splash for 5 second over the content div****/
+#splash {
+background:#fb0303;
+vertical-align: middle;
+position : fixed;
+-moz-animation: cssAnimation 0s ease-in 5s forwards;
+/* Firefox */
+-webkit-animation: cssAnimation 0s ease-in 5s forwards;
+/* Safari and Chrome */
+-o-animation: cssAnimation 0s ease-in 5s forwards;
+/* Opera */
+animation: cssAnimation 0s ease-in 5s forwards;
+-webkit-animation-fill-mode: forwards;
+animation-fill-mode: forwards;
+}
+#splash h1
+{
+font-size:50px !important;
+font-family: 'Nunito', sans-serif;
+text-align:center;
+margin-top:15%;
+vertical-align: middle;
+color:white;
+}
+/****This code is used for hiding the h1 of splash div*****/
+#hideme {
+-moz-animation: cssAnimation 0s ease-in 5s forwards;
+/* Firefox */
+-webkit-animation: cssAnimation 0s ease-in 5s forwards;
+/* Safari and Chrome */
+-o-animation: cssAnimation 0s ease-in 5s forwards;
+/* Opera */
+animation: cssAnimation 0s ease-in 5s forwards;
+-webkit-animation-fill-mode: forwards;
+animation-fill-mode: forwards;
+}
+#content
+{
+font-size:50px;
+width:100%;
+height:100%;
+background-color:grey;
+}
+html, body {
+height:100%;
+width:100%;
+margin:0;
+padding:0;
+}
+@keyframes cssAnimation {
+to {
+width:0;
+height:0;
+overflow:hidden;
+}
+}
+@-webkit-keyframes cssAnimation {
+to {
+width:0;
+height:0;
+visibility:hidden;
+}
+}
+.button1 {
+  background-color: white; 
+  color: black; 
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border: 2px solid #fb0303;
+}
 
-  <header class="intro"></header>
-  <section id="web" class="container"><h2><a href="weblink.html"><button class="button button1" href="weblink.html">Weblink Menu</button></a></h2></section>
-  <section id="gva" class="container"><h2><a href="voice.html"><button class="button button2" href="voice.html">Google and Voice assistant</button></a></h2></section>
-  <section id="ntb" class="container"><h2><a href="notes.html"><button class="button button3" href="notes.html">Note Book</button></a></h2></section>
-  <footer style="background-color: black" style="width: 70em"><span>© copyright 2019-2020<br>Powered by Nava</span></footer>
-  <script src="index.js">
-  </script>
+.button1:hover {
+  background-color: #fb0303;
+  color: white;
+}
+</style>
+<title>Nava</title>
+</head>
+<body>
+<div id="splash"><h1 id ="hideme"><span><img src="ldpi.png"></span><br/>Nava<h1></div>
+<section id="content"><p><span><img src="ldpi.png"></span><br/><a href="index1.html"><button class="button1">Press To Continue</button></a></p><section>
+<script>
+var content = $('#content');
+function resetStyles() {
+content.attr('style','').removeAttr('style');
+}
+function applyStyles() {
+content.css({
+opacity : 1,
+transform: 'scale(1.0,1.0)',
+WebkitTransform: 'scale(1.0,1.0)',
+transition : 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out',
+WebkitTransition : '-webkit-transform 0.4s ease-in-out, opacity 0.4s ease-in-out'
+});
+}
+applyStyles();
+setInterval(function(){|
+resetStyles();
+setTimeout(function(){
+applyStyles();
+},1000)
+},3000);
+
+</script>
 </body>
-</center>
 </html>

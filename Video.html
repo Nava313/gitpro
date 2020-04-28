@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Nava</title>
+  <link rel="shortcut icon" type="image/x-icon" href="ldpi.png">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style id="compiled-css" type="text/css">
+  body {
+  display: block;
+  font-family: Arial;
+  height: 100%;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  }
+  video {
+  width: 40%;
+  border-radius:15px;
+  margin: 5px 10px;
+  }
+  </style>
+
+</head>
+<center>
+<body>
+<a href="index1.html"><button>Back to menu</button></a>
+<script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
+<script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
+
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">//<![CDATA[
+
+
+var connection = new RTCMultiConnection();
+
+// this line is VERY_important
+connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
+// all below lines are optional; however recommended.
+
+connection.session = {
+    audio: true,
+    video: true
+};
+
+connection.sdpConstraints.mandatory = {
+    OfferToReceiveAudio: true,
+    OfferToReceiveVideo: true
+};
+
+connection.onstream = function(event) {
+    document.body.appendChild( event.mediaElement );
+};
+
+var predefinedRoomId = prompt('Please enter room-id', 'Nava');
+
+connection.openOrJoin(predefinedRoomId);
+//]]>
+</script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "bh350Lsr"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+</body>
+</center>
+</html>
